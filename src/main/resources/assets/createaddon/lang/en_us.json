@@ -1,0 +1,5 @@
+{
+  "itemGroup.createaddon": "Example Mod Tab",
+  "block.createaddon.example_block": "Example Block",
+  "item.createaddon.example_item": "Example Item"
+}
