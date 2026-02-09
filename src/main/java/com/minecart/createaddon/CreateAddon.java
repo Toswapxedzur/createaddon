@@ -42,6 +42,7 @@ public class CreateAddon {
     public CreateAddon(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
         ModBlocks.register();
+        ModBlockEntities.register();
         REGISTRATE.registerEventListeners(modEventBus);
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
