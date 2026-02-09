@@ -22,8 +22,8 @@ import net.minecraft.world.level.material.MapColor;
 import static com.minecart.createaddon.CreateAddon.REGISTRATE;
 
 public class ModBlocks {
-    public static final BlockEntry<RotatedPillarBlock> JUKEBOX_ENCASED_SHAFT = REGISTRATE
-            .block("jukebox_encased_shaft", RotatedPillarBlock::new)
+    public static final BlockEntry<JukeboxEncasedShaftBlock> JUKEBOX_ENCASED_SHAFT = REGISTRATE
+            .block("jukebox_encased_shaft", JukeboxEncasedShaftBlock::new)
             .initialProperties(() -> Blocks.JUKEBOX)
             .properties(p -> p.mapColor(MapColor.PODZOL))
             .properties(p -> p.sound(SoundType.WOOD))
