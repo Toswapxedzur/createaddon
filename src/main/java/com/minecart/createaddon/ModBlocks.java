@@ -1,12 +1,11 @@
 package com.minecart.createaddon;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
-import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.TagGen;
-import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.data.recipes.RecipeCategory;
@@ -15,16 +14,15 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.material.MapColor;
 
 import static com.minecart.createaddon.CreateAddon.REGISTRATE;
 
 public class ModBlocks {
-    public static final BlockEntry<JukeboxEncasedShaftBlock> JUKEBOX_ENCASED_SHAFT = REGISTRATE
-            .block("jukebox_encased_shaft", JukeboxEncasedShaftBlock::new)
-            .initialProperties(() -> Blocks.JUKEBOX)
+    public static final BlockEntry<NoteblockEncasedShaftBlock> NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .block("noteblock_encased_shaft", NoteblockEncasedShaftBlock::new)
+            .initialProperties(() -> Blocks.NOTE_BLOCK)
             .properties(p -> p.mapColor(MapColor.PODZOL))
             .properties(p -> p.sound(SoundType.WOOD))
             .properties(p -> p.noOcclusion())
@@ -33,9 +31,9 @@ public class ModBlocks {
             .transform(TagGen.pickaxeOnly())
             .tag(BlockTags.MINEABLE_WITH_AXE)
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
-            .lang("Jukebox Encased Shaft")
+            .lang("Noteblock Encased Shaft")
             .tag(AllTags.AllBlockTags.CASING.tag)
-            .loot((loot, block) -> loot.dropOther(block, Items.JUKEBOX))
+            .loot((loot, block) -> loot.dropOther(block, Items.NOTE_BLOCK))
             .item()
             .tab(CreativeModeTabs.BUILDING_BLOCKS)
             .removeTab(CreativeModeTabs.COMBAT)
@@ -43,9 +41,59 @@ public class ModBlocks {
             .transform(ModelGen.customItemModel())
             .recipe((ctx, provider) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get())
-                        .requires(Items.JUKEBOX).requires(AllBlocks.SHAFT.asItem())
+                        .requires(Items.NOTE_BLOCK).requires(AllBlocks.SHAFT.asItem())
                         .unlockedBy("has_shaft", RegistrateRecipeProvider.has(AllBlocks.SHAFT.asItem()))
-                        .save(provider, CreateAddon.modLoc("jukebox_encased_shaft_using_shafts"));
+                        .save(provider, CreateAddon.modLoc("noteblock_encased_shaft_using_shafts"));
+            })
+            .register();
+
+    public static final BlockEntry<NoteblockEncasedCogwheelBlock> NOTEBLOCK_ENCASED_COGWHEEL = REGISTRATE
+            .block("noteblock_encased_cogwheel", NoteblockEncasedCogwheelBlock::new)
+            .initialProperties(() -> Blocks.NOTE_BLOCK)
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .properties(p -> p.sound(SoundType.WOOD))
+            .properties(p -> p.noOcclusion())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .transform(TagGen.pickaxeOnly())
+            .tag(BlockTags.MINEABLE_WITH_AXE)
+            .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag) // Allows fans to blow through? Optional.
+            .tag(AllTags.AllBlockTags.CASING.tag)
+            .loot((loot, block) -> loot.dropOther(block, Items.NOTE_BLOCK)) // Drop noteblock on break
+            .lang("Noteblock Encased Cogwheel")
+            .item()
+            .tab(CreativeModeTabs.BUILDING_BLOCKS)
+            .transform(ModelGen.customItemModel())
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get())
+                        .requires(Items.NOTE_BLOCK)
+                        .requires(AllBlocks.COGWHEEL.asItem()) // Requires Cogwheel instead of Shaft
+                        .unlockedBy("has_cogwheel", RegistrateRecipeProvider.has(AllBlocks.COGWHEEL.asItem()))
+                        .save(provider, CreateAddon.modLoc("noteblock_encased_cogwheel_using_cogs"));
+            })
+            .register();
+
+    public static final BlockEntry<CalibratedNoteBlockEncasedShaftBlock> CALIBRATED_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .block("calibrated_noteblock_encased_shaft", CalibratedNoteBlockEncasedShaftBlock::new)
+            .initialProperties(() -> Blocks.NOTE_BLOCK)
+            .properties(p -> p.mapColor(MapColor.WOOD))
+            .properties(p -> p.sound(SoundType.WOOD))
+            .properties(p -> p.noOcclusion())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .transform(TagGen.pickaxeOnly())
+            .tag(BlockTags.MINEABLE_WITH_AXE)
+            .tag(AllTags.AllBlockTags.CASING.tag)
+            .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
+            .loot((loot, block) -> loot.dropOther(block, Items.CALIBRATED_SCULK_SENSOR))
+            .lang("Calibrated Noteblock Encased Shaft")
+            .item()
+            .tab(CreativeModeTabs.BUILDING_BLOCKS)
+            .transform(ModelGen.customItemModel())
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get())
+                        .requires(Items.AMETHYST_SHARD).requires(AllBlocks.SHAFT.asItem()).requires(Blocks.NOTE_BLOCK)
+                        .requires(AllBlocks.SHAFT.asItem())
+                        .unlockedBy("has_shaft", RegistrateRecipeProvider.has(AllBlocks.SHAFT.asItem()))
+                        .save(provider, CreateAddon.modLoc("calibrated_noteblock_encased_shaft"));
             })
             .register();
 

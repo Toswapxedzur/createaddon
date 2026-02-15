@@ -3,19 +3,15 @@ package com.minecart.createaddon;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class JukeboxEncasedShaftBlockEntity extends KineticBlockEntity {
+public class NoteblockEncasedShaftBlockEntity extends KineticBlockEntity {
     private int tickTimer = 0;
 
-    public JukeboxEncasedShaftBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
+    public NoteblockEncasedShaftBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
     }
 
