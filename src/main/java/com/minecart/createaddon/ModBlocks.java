@@ -15,6 +15,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.properties.SculkSensorPhase;
 import net.minecraft.world.level.material.MapColor;
 
 import static com.minecart.createaddon.CreateAddon.REGISTRATE;
@@ -94,6 +95,28 @@ public class ModBlocks {
                         .requires(AllBlocks.SHAFT.asItem())
                         .unlockedBy("has_shaft", RegistrateRecipeProvider.has(AllBlocks.SHAFT.asItem()))
                         .save(provider, CreateAddon.modLoc("calibrated_noteblock_encased_shaft"));
+            })
+            .register();
+
+    public static final BlockEntry<KineticSculkSensorBlock> KINETIC_SCULK_SENSOR = REGISTRATE
+            .block("kinetic_sculk_sensor", KineticSculkSensorBlock::new)
+            .initialProperties(() -> Blocks.SCULK_SENSOR)
+            .properties(p -> p.mapColor(MapColor.COLOR_CYAN))
+            .properties(p -> p.noOcclusion())
+            .properties(p -> p.lightLevel(state -> state.getValue(KineticSculkSensorBlock.PHASE) == SculkSensorPhase.ACTIVE ? 5 : 0)) // Light up when active
+            .blockstate((c, p) -> {})
+            .transform(TagGen.pickaxeOnly())
+            .tag(AllTags.AllBlockTags.SAFE_NBT.tag) // Safe to move with contraptions
+            .lang("Kinetic Sculk Sensor")
+            .item()
+            .tab(CreativeModeTabs.REDSTONE_BLOCKS)
+            .transform(ModelGen.customItemModel())
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ctx.get())
+                        .requires(Blocks.SCULK_SENSOR)
+                        .requires(AllBlocks.SHAFT.asItem())
+                        .unlockedBy("has_sculk_sensor", RegistrateRecipeProvider.has(Blocks.SCULK_SENSOR))
+                        .save(provider, CreateAddon.modLoc("kinetic_sculk_sensor"));
             })
             .register();
 

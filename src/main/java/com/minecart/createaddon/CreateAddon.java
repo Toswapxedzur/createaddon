@@ -41,6 +41,7 @@ public class CreateAddon {
 
     public CreateAddon(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+        ModPartialModel.register();
         REGISTRATE.registerEventListeners(modEventBus);
         ModBlocks.register();
         ModBlockEntities.register();
