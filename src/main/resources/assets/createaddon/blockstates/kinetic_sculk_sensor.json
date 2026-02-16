@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "sculk_sensor_phase=active": {
+      "model": "createaddon:block/kinetic_sculk_sensor/kinetic_sculk_sensor_active"
+    },
+    "sculk_sensor_phase=cooldown": {
+      "model": "createaddon:block/kinetic_sculk_sensor/kinetic_sculk_sensor_active"
+    },
+    "sculk_sensor_phase=inactive": {
+      "model": "createaddon:block/kinetic_sculk_sensor/kinetic_sculk_sensor_inactive"
+    }
+  }
+}

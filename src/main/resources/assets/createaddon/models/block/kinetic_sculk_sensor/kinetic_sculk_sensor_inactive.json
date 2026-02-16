@@ -1,0 +1,6 @@
+{
+    "parent": "createaddon:block/kinetic_sculk_sensor/kinetic_sculk_sensor",
+    "textures": {
+        "tendrils": "block/sculk_sensor_tendril_inactive"
+    }
+}
