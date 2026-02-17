@@ -1,0 +1,9 @@
+{
+  "block.createaddon.calibrated_noteblock_encased_shaft": "校准音符盒封装轴",
+  "block.createaddon.kinetic_sculk_sensor": "动力幽匿感测器",
+  "block.createaddon.noteblock_encased_cogwheel": "音符盒封装齿轮",
+  "block.createaddon.noteblock_encased_shaft": "音符盒封装轴",
+  "create.createaddon.tooltip.kinetic_noteblock.frequency": "频率为每秒 %s 拍",
+  "create.createaddon.tooltip.kinetic_noteblock.speed": "转速：%s RPM",
+  "create.createaddon.tooltip.kinetic_noteblock.tune": "当前音调：在当前转速下为 %s"
+}
