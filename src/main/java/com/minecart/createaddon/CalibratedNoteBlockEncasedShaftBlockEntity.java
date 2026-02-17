@@ -3,10 +3,13 @@ package com.minecart.createaddon;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
+import com.simibubi.create.foundation.utility.CreateLang;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -93,5 +96,46 @@ public class CalibratedNoteBlockEncasedShaftBlockEntity extends KineticBlockEnti
         }
 
         return 0;
+    }
+
+    //tooltip
+
+    private static final String[] NOTE_NAMES = {"F#", "G", "G#", "A", "A#", "B", "C", "C#", "D", "D#", "E", "F"};
+
+    @Override
+    public boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        super.addToTooltip(tooltip, isPlayerSneaking);
+
+        float speed = Math.abs(getSpeed());
+
+        CreateLang.translate("createaddon.tooltip.kinetic_noteblock.speed",
+                        CreateLang.number(speed).component().withStyle(ChatFormatting.WHITE))
+                .style(ChatFormatting.GRAY)
+                .forGoggles(tooltip);
+
+        return true;
+    }
+
+    @Override
+    public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+        boolean superResult = super.addToGoggleTooltip(tooltip, isPlayerSneaking);
+
+        float speed = Math.abs(getSpeed());
+        int noteIndex = Mth.clamp((int) (speed / 10), 0, 24);
+        String noteName = NOTE_NAMES[noteIndex % 12];
+
+        int frequency = (speed > 0) ? 4 : 0;
+
+        CreateLang.translate("createaddon.tooltip.kinetic_noteblock.tune",
+                        CreateLang.text(noteName).style(ChatFormatting.LIGHT_PURPLE))
+                .style(ChatFormatting.GOLD)
+                .forGoggles(tooltip);
+
+        CreateLang.translate("createaddon.tooltip.kinetic_noteblock.frequency",
+                        CreateLang.number(frequency).component().withStyle(ChatFormatting.BLUE))
+                .style(ChatFormatting.GRAY) // Gray text looks best for secondary info
+                .forGoggles(tooltip);
+
+        return true;
     }
 }
