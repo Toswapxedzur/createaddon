@@ -1,5 +1,9 @@
 package com.minecart.createaddon;
 
+import com.minecart.createaddon.block_entities.CalibratedNoteBlockEncasedShaftBlockEntity;
+import com.minecart.createaddon.block_entities.KineticSculkSensorBlockEntity;
+import com.minecart.createaddon.block_entities.NoteblockEncasedCogwheelBlockEntity;
+import com.minecart.createaddon.block_entities.NoteblockEncasedShaftBlockEntity;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;

@@ -1,9 +1,8 @@
-package com.minecart.createaddon;
+package com.minecart.createaddon.block_entities;
 
-import com.simibubi.create.Create;
-import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
+import com.simibubi.create.content.kinetics.base.IRotate;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.utility.CreateLang;
-import net.createmod.catnip.lang.Lang;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -12,21 +11,21 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.List;
 
-public class NoteblockEncasedCogwheelBlockEntity extends SimpleKineticBlockEntity {
+public class CalibratedNoteBlockEncasedShaftBlockEntity extends KineticBlockEntity{
     private int tickTimer = 0;
 
-    public NoteblockEncasedCogwheelBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
+    public CalibratedNoteBlockEncasedShaftBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
     }
 
     @Override
     public float calculateStressApplied() {
-        this.lastStressApplied = 16;
-        return 16;
+        this.lastStressApplied = 32;
+        return 32;
     }
 
     @Override
@@ -38,27 +37,14 @@ public class NoteblockEncasedCogwheelBlockEntity extends SimpleKineticBlockEntit
             if (speed > 0) {
                 tickTimer--;
                 if (tickTimer <= 0) {
-                    // Map speed (0-256) to note range (0-24)
-                    // Adjust the divisor (10) to change how fast the pitch rises with RPM
                     int note = Mth.clamp((int) (speed / 10), 0, 24);
 
                     level.blockEvent(worldPosition, getBlockState().getBlock(), 67, note);
 
-                    // Reset timer. 5 ticks = 4 notes per second.
                     tickTimer = 5;
                 }
             }
         }
-    }
-
-    @Override
-    protected AABB createRenderBoundingBox() {
-        return new AABB(worldPosition);
-    }
-
-    @Override
-    protected boolean isNoisy() {
-        return true;
     }
 
     @Override
@@ -71,6 +57,43 @@ public class NoteblockEncasedCogwheelBlockEntity extends SimpleKineticBlockEntit
     protected void read(CompoundTag compound, HolderLookup.Provider registries, boolean clientPacket) {
         super.read(compound, registries, clientPacket);
         tickTimer = compound.getInt("tickTimer");
+    }
+
+    @Override
+    public List<BlockPos> addPropagationLocations(IRotate block, BlockState state, List<BlockPos> neighbours) {
+        BlockPos.betweenClosedStream(BlockPos.ZERO.below(4), BlockPos.ZERO.above(4)).forEach(
+                pos -> {
+                    if(pos.getY() != 0)
+                        neighbours.add(getBlockPos().offset(pos));
+                }
+        );
+        return super.addPropagationLocations(block, state, neighbours);
+    }
+
+    @Override
+    public boolean isCustomConnection(KineticBlockEntity other, BlockState state, BlockState otherState) {
+        if (other instanceof CalibratedNoteBlockEncasedShaftBlockEntity) {
+            BlockPos diff = other.getBlockPos().subtract(this.getBlockPos());
+            return diff.getX() == 0 && diff.getZ() == 0 && Math.abs(diff.getY()) <= 4 && this.getBlockState().getValue(BlockStateProperties.AXIS) == other.getBlockState().getValue(BlockStateProperties.AXIS);
+        }
+        return false;
+    }
+
+    @Override
+    public float propagateRotationTo(KineticBlockEntity target, BlockState stateFrom, BlockState stateTo, BlockPos diff,
+                                     boolean connectedViaAxes, boolean connectedViaCogs) {
+
+        if (connectedViaAxes || connectedViaCogs) {
+            return super.propagateRotationTo(target, stateFrom, stateTo, diff, connectedViaAxes, connectedViaCogs);
+        }
+
+        if (target instanceof CalibratedNoteBlockEncasedShaftBlockEntity) {
+            if (diff.getX() == 0 && diff.getZ() == 0 && Math.abs(diff.getY()) <= 4 && this.getBlockState().getValue(BlockStateProperties.AXIS) == target.getBlockState().getValue(BlockStateProperties.AXIS)) {
+                return 1.0f;
+            }
+        }
+
+        return 0;
     }
 
     //tooltip

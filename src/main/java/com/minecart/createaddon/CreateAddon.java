@@ -1,11 +1,13 @@
 package com.minecart.createaddon;
 
+import com.minecart.createaddon.ponder.ModPonder;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.createmod.catnip.lang.FontHelper;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -41,9 +43,8 @@ public class CreateAddon {
 
     public CreateAddon(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
-        ModPartialModel.register();
+        modEventBus.addListener(ModDatagen::gatherData);
         REGISTRATE.registerEventListeners(modEventBus);
-        registerLangEntries();
         ModBlocks.register();
         ModBlockEntities.register();
         NeoForge.EVENT_BUS.register(this);
@@ -65,6 +66,8 @@ public class CreateAddon {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            ModPartialModel.register();
+            PonderIndex.addPlugin(new ModPonder());
         }
     }
 

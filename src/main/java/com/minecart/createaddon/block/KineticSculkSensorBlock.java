@@ -1,9 +1,9 @@
-package com.minecart.createaddon;
+package com.minecart.createaddon.block;
 
-import com.google.common.annotations.VisibleForTesting;
+import com.minecart.createaddon.ModBlockEntities;
+import com.minecart.createaddon.block_entities.KineticSculkSensorBlockEntity;
 import com.mojang.serialization.MapCodec;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
@@ -28,9 +28,7 @@ import net.minecraft.world.level.block.NoteBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;

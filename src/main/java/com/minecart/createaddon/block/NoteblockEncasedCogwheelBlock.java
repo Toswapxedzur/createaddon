@@ -1,17 +1,10 @@
-package com.minecart.createaddon;
+package com.minecart.createaddon.block;
 
-import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.minecart.createaddon.ModBlockEntities;
+import com.minecart.createaddon.block_entities.NoteblockEncasedCogwheelBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
 
 public class NoteblockEncasedCogwheelBlock extends NoteblockEncasedBlock implements IBE<NoteblockEncasedCogwheelBlockEntity>, ICogWheel {
 

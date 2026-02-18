@@ -1,5 +1,7 @@
-package com.minecart.createaddon;
+package com.minecart.createaddon.block;
 
+import com.minecart.createaddon.ModBlockEntities;
+import com.minecart.createaddon.block_entities.CalibratedNoteBlockEncasedShaftBlockEntity;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.core.BlockPos;
