@@ -1,4 +1,4 @@
-package com.minecart.createaddon;
+package com.minecart.createaddon.block;
 
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import net.minecraft.core.BlockPos;

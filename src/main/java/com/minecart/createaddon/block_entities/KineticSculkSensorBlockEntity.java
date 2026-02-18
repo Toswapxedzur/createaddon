@@ -1,8 +1,8 @@
-package com.minecart.createaddon;
+package com.minecart.createaddon.block_entities;
 
+import com.minecart.createaddon.block.KineticSculkSensorBlock;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.content.kinetics.base.GeneratingKineticBlockEntity;
-import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
