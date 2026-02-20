@@ -1,15 +1,12 @@
 package com.minecart.createaddon;
 
-import com.minecart.createaddon.block_entities.CalibratedNoteBlockEncasedShaftBlockEntity;
-import com.minecart.createaddon.block_entities.KineticSculkSensorBlockEntity;
-import com.minecart.createaddon.block_entities.NoteblockEncasedCogwheelBlockEntity;
-import com.minecart.createaddon.block_entities.NoteblockEncasedShaftBlockEntity;
+import com.minecart.createaddon.block_entities.*;
+import com.minecart.createaddon.block_entity_renderer.CogRenderer;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.base.ShaftVisual;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
-import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisual;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import dev.engine_room.flywheel.lib.model.Models;
@@ -22,18 +19,18 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import static com.minecart.createaddon.CreateAddon.REGISTRATE;
 
 public class ModBlockEntities {
-    public static final BlockEntityEntry<NoteblockEncasedShaftBlockEntity> noteblock_ENCASED_SHAFT = REGISTRATE
-            .blockEntity("noteblock_encased_shaft", NoteblockEncasedShaftBlockEntity::new)
+    public static final BlockEntityEntry<AndesiteNoteblockEncasedBlockEntity> ANDESITE_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .blockEntity("noteblock_encased_shaft", AndesiteNoteblockEncasedBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
             .validBlocks(ModBlocks.NOTEBLOCK_ENCASED_SHAFT)
             .renderer(() -> ShaftRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<NoteblockEncasedCogwheelBlockEntity> noteblock_ENCASED_COGWHEEL = REGISTRATE
-            .blockEntity("noteblock_encased_cogwheel", NoteblockEncasedCogwheelBlockEntity::new)
+    public static final BlockEntityEntry<AndesiteNoteblockEncasedBlockEntity> ANDESITE_NOTEBLOCK_ENCASED_COGWHEEL = REGISTRATE
+            .blockEntity("noteblock_encased_cogwheel", AndesiteNoteblockEncasedBlockEntity::new)
             .visual(() -> EncasedCogVisual::small, false)
             .validBlocks(ModBlocks.NOTEBLOCK_ENCASED_COGWHEEL)
-            .renderer(() -> EncasedCogRenderer::small)
+            .renderer(() -> CogRenderer::new)
             .register();
 
     public static final BlockEntityEntry<CalibratedNoteBlockEncasedShaftBlockEntity> CALIBRATED_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
@@ -53,6 +50,22 @@ public class ModBlockEntities {
                     return CachedBuffers.partial(ModPartialModel.QUATERED_SHAFT, AllBlocks.SHAFT.getDefaultState().setValue(BlockStateProperties.AXIS, Direction.Axis.Y));
                 }
             })
+            .register();
+
+    public static final BlockEntityEntry<BrassNoteblockEncasedBlockEntity> BRASS_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .blockEntity("brass_noteblock_encased_shaft", BrassNoteblockEncasedBlockEntity::new)
+            .visual(()->ShaftVisual::new)
+            .validBlocks(ModBlocks.BRASS_NOTEBLOCK_ENCASED_SHAFT)
+            // Use the standard renderer (Handles spinning shaft + Scroll Value overlay automatically)
+            .renderer(() -> ShaftRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<BrassNoteblockEncasedBlockEntity> BRASS_NOTEBLOCK_ENCASED_COGWHEEL = REGISTRATE
+            .blockEntity("brass_noteblock_encased_cogwheel", BrassNoteblockEncasedBlockEntity::new)
+            .visual(()->EncasedCogVisual::small)
+            .validBlocks(ModBlocks.BRASS_NOTEBLOCK_ENCASED_COGWHEEL)
+            // Use the standard renderer (Handles spinning shaft + Scroll Value overlay automatically)
+            .renderer(() -> CogRenderer::new)
             .register();
 
     public static void register() {

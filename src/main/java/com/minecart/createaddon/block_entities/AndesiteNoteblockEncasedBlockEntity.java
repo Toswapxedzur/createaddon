@@ -13,12 +13,12 @@ import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
-public class NoteblockEncasedShaftBlockEntity extends KineticBlockEntity {
-    private int tickTimer = 0;
-
-    public NoteblockEncasedShaftBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
+public class AndesiteNoteblockEncasedBlockEntity extends KineticBlockEntity {
+    public AndesiteNoteblockEncasedBlockEntity(BlockEntityType<?> typeIn, BlockPos pos, BlockState state) {
         super(typeIn, pos, state);
     }
+
+    private int tickTimer = 0;
 
     @Override
     public float calculateStressApplied() {
@@ -30,15 +30,18 @@ public class NoteblockEncasedShaftBlockEntity extends KineticBlockEntity {
     public void tick() {
         super.tick();
 
-        if (!level.isClientSide) {
+        if (level != null && !level.isClientSide) {
             float speed = Math.abs(getSpeed());
             if (speed > 0) {
                 tickTimer--;
                 if (tickTimer <= 0) {
+                    // Map speed (0-256) to note range (0-24)
+                    // Adjust the divisor (10) to change how fast the pitch rises with RPM
                     int note = Mth.clamp((int) (speed / 10), 0, 24);
 
                     level.blockEvent(worldPosition, getBlockState().getBlock(), 67, note);
 
+                    // Reset timer. 5 ticks = 4 notes per second.
                     tickTimer = 5;
                 }
             }
