@@ -1,13 +1,16 @@
 package com.minecart.createaddon;
 
-import com.minecart.createaddon.block.CalibratedNoteBlockEncasedShaftBlock;
-import com.minecart.createaddon.block.KineticSculkSensorBlock;
-import com.minecart.createaddon.block.NoteblockEncasedCogwheelBlock;
-import com.minecart.createaddon.block.NoteblockEncasedShaftBlock;
+import com.minecart.createaddon.block.*;
+import com.minecart.createaddon.block.andesite.AndesiteNoteblockEncasedCogwheelBlock;
+import com.minecart.createaddon.block.andesite.AndesiteNoteblockEncasedShaftBlock;
+import com.minecart.createaddon.block.brass.BrassNoteblockEncasedCogwheelBlock;
+import com.minecart.createaddon.block.brass.BrassNoteblockEncasedShaftBlock;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.ModelGen;
+import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -24,8 +27,8 @@ import net.minecraft.world.level.material.MapColor;
 import static com.minecart.createaddon.CreateAddon.REGISTRATE;
 
 public class ModBlocks {
-    public static final BlockEntry<NoteblockEncasedShaftBlock> NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
-            .block("noteblock_encased_shaft", NoteblockEncasedShaftBlock::new)
+    public static final BlockEntry<AndesiteNoteblockEncasedShaftBlock> NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .block("noteblock_encased_shaft", AndesiteNoteblockEncasedShaftBlock::new)
             .initialProperties(() -> Blocks.NOTE_BLOCK)
             .properties(p -> p.mapColor(MapColor.PODZOL))
             .properties(p -> p.sound(SoundType.WOOD))
@@ -37,9 +40,8 @@ public class ModBlocks {
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
             .lang("Noteblock Encased Shaft")
             .tag(AllTags.AllBlockTags.CASING.tag)
-            .loot((loot, block) -> loot.dropOther(block, Items.NOTE_BLOCK))
+//            .loot((loot, block) -> loot.dropOther(block, Items.NOTE_BLOCK))
             .item()
-            .tab(CreativeModeTabs.BUILDING_BLOCKS)
             .removeTab(CreativeModeTabs.COMBAT)
 //            .model(AssetLookup::customItemModel).build()
             .transform(ModelGen.customItemModel())
@@ -51,8 +53,8 @@ public class ModBlocks {
             })
             .register();
 
-    public static final BlockEntry<NoteblockEncasedCogwheelBlock> NOTEBLOCK_ENCASED_COGWHEEL = REGISTRATE
-            .block("noteblock_encased_cogwheel", NoteblockEncasedCogwheelBlock::new)
+    public static final BlockEntry<AndesiteNoteblockEncasedCogwheelBlock> NOTEBLOCK_ENCASED_COGWHEEL = REGISTRATE
+            .block("noteblock_encased_cogwheel", AndesiteNoteblockEncasedCogwheelBlock::new)
             .initialProperties(() -> Blocks.NOTE_BLOCK)
             .properties(p -> p.mapColor(MapColor.PODZOL))
             .properties(p -> p.sound(SoundType.WOOD))
@@ -65,7 +67,6 @@ public class ModBlocks {
             .loot((loot, block) -> loot.dropOther(block, Items.NOTE_BLOCK)) // Drop noteblock on break
             .lang("Noteblock Encased Cogwheel")
             .item()
-            .tab(CreativeModeTabs.BUILDING_BLOCKS)
             .transform(ModelGen.customItemModel())
             .recipe((ctx, provider) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get())
@@ -87,10 +88,9 @@ public class ModBlocks {
             .tag(BlockTags.MINEABLE_WITH_AXE)
             .tag(AllTags.AllBlockTags.CASING.tag)
             .tag(AllTags.AllBlockTags.FAN_TRANSPARENT.tag)
-            .loot((loot, block) -> loot.dropOther(block, Items.CALIBRATED_SCULK_SENSOR))
+//            .loot((loot, block) -> loot.dropOther(block, Items.CALIBRATED_SCULK_SENSOR))
             .lang("Calibrated Noteblock Encased Shaft")
             .item()
-            .tab(CreativeModeTabs.BUILDING_BLOCKS)
             .transform(ModelGen.customItemModel())
             .recipe((ctx, provider) -> {
                 ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ctx.get())
@@ -120,6 +120,50 @@ public class ModBlocks {
                         .requires(AllBlocks.SHAFT.asItem())
                         .unlockedBy("has_sculk_sensor", RegistrateRecipeProvider.has(Blocks.SCULK_SENSOR))
                         .save(provider, CreateAddon.modLoc("kinetic_sculk_sensor"));
+            })
+            .register();
+
+    public static final BlockEntry<BrassNoteblockEncasedShaftBlock> BRASS_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .block("brass_noteblock_encased_shaft", BrassNoteblockEncasedShaftBlock::new)
+            .initialProperties(SharedProperties::softMetal) // Use Brass properties (requires pickaxe)
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+            .properties(p -> p.sound(SoundType.WOOD)) // Keep Wood sound for noteblock feel, or Metal for casing
+            .properties(p -> p.noOcclusion())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE) // Brass needs a Pickaxe
+            .tag(AllTags.AllBlockTags.CASING.tag)
+            .lang("Brass Noteblock Encased Shaft")
+            .item()
+            .transform(ModelGen.customItemModel())
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ctx.get())
+                        .requires(Items.NOTE_BLOCK)
+                        .requires(AllItems.BRASS_INGOT) // Logical recipe: Brass Casing + Noteblock
+                        .requires(AllBlocks.SHAFT)
+                        .unlockedBy("has_brass_ingot", RegistrateRecipeProvider.has(AllBlocks.BRASS_CASING))
+                        .save(provider, CreateAddon.modLoc("crafting/brass_noteblock_encased_shaft"));
+            })
+            .register();
+
+    public static final BlockEntry<BrassNoteblockEncasedCogwheelBlock> BRASS_NOTEBLOCK_ENCASED_COGWHEEL = REGISTRATE
+            .block("brass_noteblock_encased_cogwheel", BrassNoteblockEncasedCogwheelBlock::new)
+            .initialProperties(SharedProperties::softMetal) // Use Brass properties (requires pickaxe)
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+            .properties(p -> p.sound(SoundType.WOOD)) // Keep Wood sound for noteblock feel, or Metal for casing
+            .properties(p -> p.noOcclusion())
+            .blockstate(BlockStateGen.axisBlockProvider(true))
+            .tag(BlockTags.MINEABLE_WITH_PICKAXE) // Brass needs a Pickaxe
+            .tag(AllTags.AllBlockTags.CASING.tag)
+            .lang("Brass Noteblock Encased Cogwheel")
+            .item()
+            .transform(ModelGen.customItemModel())
+            .recipe((ctx, provider) -> {
+                ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ctx.get())
+                        .requires(Items.NOTE_BLOCK)
+                        .requires(AllItems.BRASS_INGOT) // Logical recipe: Brass Casing + Noteblock
+                        .requires(AllBlocks.COGWHEEL)
+                        .unlockedBy("has_brass_ingot", RegistrateRecipeProvider.has(AllBlocks.BRASS_CASING))
+                        .save(provider, CreateAddon.modLoc("crafting/brass_noteblock_encased_cogwheel"));
             })
             .register();
 

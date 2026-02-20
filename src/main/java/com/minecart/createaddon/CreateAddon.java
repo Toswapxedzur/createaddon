@@ -36,7 +36,7 @@ public class CreateAddon {
 
     static {
 //        REGISTRATE.defaultCreativeTab((ResourceKey<CreativeModeTab>) null);
-        REGISTRATE.defaultCreativeTab(CreativeModeTabs.COMBAT);
+        REGISTRATE.defaultCreativeTab(CreativeModeTabs.BUILDING_BLOCKS);
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                 .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
     }
@@ -72,24 +72,29 @@ public class CreateAddon {
     }
 
     public static void registerLangEntries() {
-// 1. Rotation Speed (Standard)
         CreateAddon.REGISTRATE.addRawLang(
                 "create.createaddon.tooltip.kinetic_noteblock.speed",
                 "Rotation Speed: %s RPM"
         );
 
-        // 2. Tune (Goggle Line 1)
-        // "Current Tune: F# at the current speed"
         CreateAddon.REGISTRATE.addRawLang(
                 "create.createaddon.tooltip.kinetic_noteblock.tune",
                 "Current Tune: %s at the current speed"
         );
 
-        // 3. Frequency (Goggle Line 2)
-        // "With frequency 4 beats per second"
         CreateAddon.REGISTRATE.addRawLang(
                 "create.createaddon.tooltip.kinetic_noteblock.frequency",
                 "With frequency %s beats per second"
+        );
+
+        CreateAddon.REGISTRATE.addRawLang(
+                "create.createaddon.tooltip.kinetic_noteblock.volumn",
+                "With volumn: "
+        );
+
+        CreateAddon.REGISTRATE.addRawLang(
+                "createaddon.behaviour.volume",
+                "Select volumn"
         );
     }
 

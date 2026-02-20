@@ -34,7 +34,7 @@ public class ModPonder implements PonderPlugin {
                 RegisteredObjectsHelper::getKeyOrThrow);
 
         itemHelper.addToTag(AllCreatePonderTags.KINETIC_APPLIANCES)
-                .add(ModBlocks.NOTEBLOCK_ENCASED_SHAFT)
-                .add(ModBlocks.NOTEBLOCK_ENCASED_COGWHEEL);
+                .add(ModBlocks.NOTEBLOCK_ENCASED_SHAFT.asItem())
+                .add(ModBlocks.NOTEBLOCK_ENCASED_COGWHEEL.asItem());
     }
 }
