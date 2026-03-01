@@ -1,5 +1,6 @@
 package com.minecart.createaddon;
 
+import com.minecart.createaddon.config.ModConfigs;
 import com.minecart.createaddon.ponder.ModPonder;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -16,6 +17,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
@@ -42,14 +44,15 @@ public class CreateAddon {
     }
 
     public CreateAddon(IEventBus modEventBus, ModContainer modContainer) {
+        ModLoadingContext context = ModLoadingContext.get();
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(ModDatagen::gatherData);
         REGISTRATE.registerEventListeners(modEventBus);
         ModBlocks.register();
         ModBlockEntities.register();
+        ModConfigs.register(context, modContainer);
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

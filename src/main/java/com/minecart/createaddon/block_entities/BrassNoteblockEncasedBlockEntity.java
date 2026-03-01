@@ -1,5 +1,6 @@
 package com.minecart.createaddon.block_entities;
 
+import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.ValueBoxTransform;
@@ -41,9 +42,15 @@ public class BrassNoteblockEncasedBlockEntity extends KineticBlockEntity{
         volumeScroll.between(0, 100);
         volumeScroll.value = 75; // Default Minecraft Note Block volume is 3.0
         volumeScroll.withFormatter(i -> String.valueOf(i) + "%"); //0%, 25%, 50%... 100%
+        volumeScroll.withCallback(this::onValueChanged);
 
         behaviours.add(volumeScroll);
         super.addBehaviours(behaviours);
+    }
+
+    public void onValueChanged(int integer){
+        detachKinetics();
+        updateSpeed = true;
     }
 
     @Override
@@ -100,8 +107,6 @@ public class BrassNoteblockEncasedBlockEntity extends KineticBlockEntity{
 
     @Override
     public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-        super.addToGoggleTooltip(tooltip, isPlayerSneaking);
-
         float speed = Math.abs(getSpeed());
         int noteIndex = Mth.clamp((int) (speed / 10), 0, 24);
         String noteName = NOTE_NAMES[noteIndex % 12];
