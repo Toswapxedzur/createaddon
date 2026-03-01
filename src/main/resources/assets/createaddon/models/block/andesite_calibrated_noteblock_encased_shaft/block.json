@@ -2,10 +2,10 @@
 	"parent": "block/block",
     "render_type": "minecraft:cutout",
 	"textures": {
-		"0": "createaddon:block/calibrated_framed_jukebox_side",
+		"0": "createaddon:block/calibrated_andesite_framed_jukebox_side",
 		"1": "create:block/gearbox",
 		"2": "create:block/funnel/andesite_funnel_frame",
-		"particle": "createaddon:block/calibrated_framed_jukebox_side"
+		"particle": "createaddon:block/calibrated_andesite_framed_jukebox_side"
 	},
 	"elements": [
       {

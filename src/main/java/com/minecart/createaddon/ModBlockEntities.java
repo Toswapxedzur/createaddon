@@ -33,10 +33,17 @@ public class ModBlockEntities {
             .renderer(() -> CogRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<CalibratedNoteBlockEncasedShaftBlockEntity> CALIBRATED_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
-            .blockEntity("calibrated_noteblock_encased_shaft", CalibratedNoteBlockEncasedShaftBlockEntity::new)
+    public static final BlockEntityEntry<ACNESBlockEntity> ANDESITE_CALIBRATED_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .blockEntity("andesite_calibrated_noteblock_encased_shaft", ACNESBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
-            .validBlocks(ModBlocks.CALIBRATED_NOTEBLOCK_ENCASED_SHAFT)
+            .validBlocks(ModBlocks.ANDESITE_CALIBRATED_NOTEBLOCK_ENCASED_SHAFT)
+            .renderer(() -> ShaftRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<BCNESBlockEntity> BRASS_CALIBRATED_NOTEBLOCK_ENCASED_SHAFT = REGISTRATE
+            .blockEntity("brass_calibrated_noteblock_encased_shaft", BCNESBlockEntity::new)
+            .visual(() -> ShaftVisual::new, false)
+            .validBlocks(ModBlocks.BRASS_CALIBRATED_NOTEBLOCK_ENCASED_SHAFT)
             .renderer(() -> ShaftRenderer::new)
             .register();
 

@@ -47,13 +47,6 @@ public class KineticSculkSensorBlockEntity extends GeneratingKineticBlockEntity 
         return shriekEnergy > 15 ? 16 : 0;
     }
 
-    @Override
-    public float calculateAddedStressCapacity() {
-        float capacity = shriekEnergy > 15 ? 16 : 0;
-        this.lastCapacityProvided = capacity;
-        return capacity;
-    }
-
     public void shriek(){
         boolean update = false;
         if(getGeneratedSpeed() == 0)

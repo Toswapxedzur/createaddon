@@ -21,12 +21,6 @@ public class AndesiteNoteblockEncasedBlockEntity extends KineticBlockEntity {
     private int tickTimer = 0;
 
     @Override
-    public float calculateStressApplied() {
-        this.lastStressApplied = 16;
-        return 16;
-    }
-
-    @Override
     public void tick() {
         super.tick();
 
