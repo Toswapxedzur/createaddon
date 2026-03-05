@@ -7,10 +7,12 @@ import com.minecart.createaddon.block.andesite.AndesiteNoteblockEncasedShaftBloc
 import com.minecart.createaddon.block.brass.BCNESBlock;
 import com.minecart.createaddon.block.brass.BrassNoteblockEncasedCogwheelBlock;
 import com.minecart.createaddon.block.brass.BrassNoteblockEncasedShaftBlock;
+import com.minecart.createaddon.block_entities.bigPress.BigPressBlock;
 import com.minecart.createaddon.config.ModStress;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
+import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
@@ -198,6 +200,17 @@ public class ModBlocks {
                         .unlockedBy("has_brass_ingot", RegistrateRecipeProvider.has(AllBlocks.BRASS_CASING))
                         .save(provider, CreateAddon.modLoc("crafting/brass_noteblock_encased_cogwheel"));
             })
+            .register();
+
+    public static final BlockEntry<BigPressBlock> BIGPRESS = REGISTRATE
+            .block("big_mechanical_press", BigPressBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(properties -> properties.noOcclusion())
+            .blockstate(BlockStateGen.horizontalBlockProvider(true))
+            .transform(ModStress.setImpact(16.0))
+            .transform(TagGen.axeOrPickaxe())
+            .item(AssemblyOperatorBlockItem::new)
+            .transform(ModelGen.customItemModel())
             .register();
 
     public static void register() {

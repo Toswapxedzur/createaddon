@@ -2,6 +2,7 @@ package com.minecart.createaddon;
 
 import com.minecart.createaddon.config.ModConfigs;
 import com.minecart.createaddon.ponder.ModPonder;
+import com.minecart.createaddon.recipes.ModRecipes;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -50,6 +51,7 @@ public class CreateAddon {
         REGISTRATE.registerEventListeners(modEventBus);
         ModBlocks.register();
         ModBlockEntities.register();
+        ModRecipes.register(modEventBus);
         ModConfigs.register(context, modContainer);
         NeoForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);

@@ -1,6 +1,9 @@
 package com.minecart.createaddon;
 
 import com.minecart.createaddon.block_entities.*;
+import com.minecart.createaddon.block_entities.bigPress.BigPressBlockEntity;
+import com.minecart.createaddon.block_entities.bigPress.BigPressRenderer;
+import com.minecart.createaddon.block_entities.bigPress.BigPressVisual;
 import com.minecart.createaddon.block_entity_renderer.CogRenderer;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
@@ -72,7 +75,14 @@ public class ModBlockEntities {
             .visual(()->EncasedCogVisual::small)
             .validBlocks(ModBlocks.BRASS_NOTEBLOCK_ENCASED_COGWHEEL)
             // Use the standard renderer (Handles spinning shaft + Scroll Value overlay automatically)
-            .renderer(() -> CogRenderer::new)
+//            .renderer(() -> CogRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<BigPressBlockEntity> BIGPRESS = REGISTRATE
+            .blockEntity("big_mechanical_press", BigPressBlockEntity::new)
+            .visual(() -> BigPressVisual::new)
+            .validBlock(ModBlocks.BIGPRESS)
+            .renderer(() -> BigPressRenderer::new)
             .register();
 
     public static void register() {
