@@ -40,9 +40,9 @@ public class CompressingBehaviour extends BeltProcessingBehaviour {
     public boolean running;
     public int suspendTicks;
 
-    public Mode mode = Mode.BELT; // Track current mode
-    public int scanCooldown;// Timer for world scanning
-    public ItemEntity targetEntity; // The item entity we are crushing (World Mode only)
+    public Mode mode = Mode.BELT;
+    public int scanCooldown;
+    public ItemEntity targetEntity;
     public static final int SCAN_RATE = 10;
     public UUID targetUUID;
 

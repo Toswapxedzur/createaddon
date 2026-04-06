@@ -1,0 +1,14 @@
+{
+  "type": "createaddon:compressing",
+  "ingredients": [
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "processing_time": 400,
+  "results": [
+    {
+      "id": "create:golden_sheet"
+    }
+  ]
+}
