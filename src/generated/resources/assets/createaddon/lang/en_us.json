@@ -1,0 +1,19 @@
+{
+  "block.createaddon.andesite_calibrated_noteblock_encased_shaft": "Andesite Calibrated Noteblock Encased Shaft",
+  "block.createaddon.big_mechanical_press": "Big Mechanical Press",
+  "block.createaddon.brass_calibrated_noteblock_encased_shaft": "Brass Calibrated Noteblock Encased Shaft",
+  "block.createaddon.brass_noteblock_encased_cogwheel": "Brass Noteblock Encased Cogwheel",
+  "block.createaddon.brass_noteblock_encased_shaft": "Brass Noteblock Encased Shaft",
+  "block.createaddon.kinetic_sculk_sensor": "Kinetic Sculk Sensor",
+  "block.createaddon.noteblock_encased_cogwheel": "Noteblock Encased Cogwheel",
+  "block.createaddon.noteblock_encased_shaft": "Noteblock Encased Shaft",
+  "create.createaddon.tooltip.kinetic_noteblock.frequency": "With frequency %s beats per second",
+  "create.createaddon.tooltip.kinetic_noteblock.speed": "Rotation Speed: %s RPM",
+  "create.createaddon.tooltip.kinetic_noteblock.tune": "Current Tune: %s at the current speed",
+  "create.createaddon.tooltip.kinetic_noteblock.volumn": "With volumn: ",
+  "createaddon.behaviour.volume": "Select volumn",
+  "createaddon.ponder.noteblock_encased_cogwheel.header": "The Noteblock Encased Cogwheel",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_1": "When powered, it will emit a note beat 4 times per second.",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_2": "The amplitude of the beats is fixed, but the pitch depends on rotation speed.",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "Higher speed gives you higher pitches."
+}
