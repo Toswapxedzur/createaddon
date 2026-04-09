@@ -7,8 +7,11 @@ import com.minecart.createaddon.block.andesite.AndesiteNoteblockEncasedShaftBloc
 import com.minecart.createaddon.block.brass.BCNESBlock;
 import com.minecart.createaddon.block.brass.BrassNoteblockEncasedCogwheelBlock;
 import com.minecart.createaddon.block.brass.BrassNoteblockEncasedShaftBlock;
+import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieBlock;
+import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieMovementBehaviour;
 import com.minecart.createaddon.block_entities.bigPress.BigPressBlock;
 import com.minecart.createaddon.config.ModStress;
+import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.AllTags;
@@ -210,6 +213,19 @@ public class ModBlocks {
             .transform(ModStress.setImpact(16.0))
             .transform(TagGen.axeOrPickaxe())
             .item(AssemblyOperatorBlockItem::new)
+            .transform(ModelGen.customItemModel())
+            .register();
+
+    public static final BlockEntry<ExtrusionDieBlock> EXTRUSION_DIE = REGISTRATE
+            .block("extrusion_die", ExtrusionDieBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(properties -> properties.noOcclusion())
+            .blockstate((c, p) -> {})
+            .transform(ModStress.setImpact(16.0))
+            .transform(TagGen.pickaxeOnly())
+            .onRegister(MovementBehaviour.movementBehaviour(new ExtrusionDieMovementBehaviour()))
+            .lang("Extrusion Die")
+            .item()
             .transform(ModelGen.customItemModel())
             .register();
 

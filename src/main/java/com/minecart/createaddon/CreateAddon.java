@@ -1,5 +1,6 @@
 package com.minecart.createaddon;
 
+import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieDecompositionCache;
 import com.minecart.createaddon.config.ModConfigs;
 import com.minecart.createaddon.ponder.ModPonder;
 import com.minecart.createaddon.recipes.ModRecipes;
@@ -12,6 +13,9 @@ import net.createmod.catnip.lang.FontHelper;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.neoforged.api.distmarker.Dist;
@@ -25,8 +29,8 @@ import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
@@ -64,7 +68,18 @@ public class CreateAddon {
     }
 
     @SubscribeEvent
-    public void onServerStarting(ServerStartingEvent event) {
+    public void onAddReloadListeners(AddReloadListenerEvent event) {
+        event.addListener(new SimplePreparableReloadListener<Void>() {
+            @Override
+            protected Void prepare(ResourceManager resourceManager, ProfilerFiller profiler) {
+                return null;
+            }
+
+            @Override
+            protected void apply(Void object, ResourceManager resourceManager, ProfilerFiller profiler) {
+                ExtrusionDieDecompositionCache.invalidateAfterResourceReload();
+            }
+        });
     }
 
     @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

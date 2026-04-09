@@ -1,6 +1,9 @@
 package com.minecart.createaddon;
 
 import com.minecart.createaddon.block_entities.*;
+import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieBlockEntity;
+import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieRenderer;
+import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieVisual;
 import com.minecart.createaddon.block_entities.bigPress.BigPressBlockEntity;
 import com.minecart.createaddon.block_entities.bigPress.BigPressRenderer;
 import com.minecart.createaddon.block_entities.bigPress.BigPressVisual;
@@ -83,6 +86,13 @@ public class ModBlockEntities {
             .visual(() -> BigPressVisual::new)
             .validBlock(ModBlocks.BIGPRESS)
             .renderer(() -> BigPressRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<ExtrusionDieBlockEntity> EXTRUSION_DIE = REGISTRATE
+            .blockEntity("extrusion_die", ExtrusionDieBlockEntity::new)
+            .visual(() -> ExtrusionDieVisual::new, false)
+            .validBlocks(ModBlocks.EXTRUSION_DIE)
+            .renderer(() -> ExtrusionDieRenderer::new)
             .register();
 
     public static void register() {
