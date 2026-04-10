@@ -4,6 +4,7 @@
   "block.createaddon.brass_calibrated_noteblock_encased_shaft": "ʇɟɐɥS pǝsɐɔuƎ ʞɔoןqǝʇoN pǝʇɐɹqıןɐƆ ssɐɹᗺ",
   "block.createaddon.brass_noteblock_encased_cogwheel": "ןǝǝɥʍboƆ pǝsɐɔuƎ ʞɔoןqǝʇoN ssɐɹᗺ",
   "block.createaddon.brass_noteblock_encased_shaft": "ʇɟɐɥS pǝsɐɔuƎ ʞɔoןqǝʇoN ssɐɹᗺ",
+  "block.createaddon.extrusion_die": "ǝıᗡ uoısnɹʇxƎ",
   "block.createaddon.kinetic_sculk_sensor": "ɹosuǝS ʞןnɔS ɔıʇǝuıʞ",
   "block.createaddon.noteblock_encased_cogwheel": "ןǝǝɥʍboƆ pǝsɐɔuƎ ʞɔoןqǝʇoN",
   "block.createaddon.noteblock_encased_shaft": "ʇɟɐɥS pǝsɐɔuƎ ʞɔoןqǝʇoN",
@@ -15,5 +16,7 @@
   "createaddon.ponder.noteblock_encased_cogwheel.header": "ןǝǝɥʍboƆ pǝsɐɔuƎ ʞɔoןqǝʇoN ǝɥ⟘",
   "createaddon.ponder.noteblock_encased_cogwheel.text_1": "˙puoɔǝs ɹǝd sǝɯıʇ ㄣ ʇɐǝq ǝʇou ɐ ʇıɯǝ ןןıʍ ʇı 'pǝɹǝʍod uǝɥM",
   "createaddon.ponder.noteblock_encased_cogwheel.text_2": "˙pǝǝds uoıʇɐʇoɹ uo spuǝdǝp ɥɔʇıd ǝɥʇ ʇnq 'pǝxıɟ sı sʇɐǝq ǝɥʇ ɟo ǝpnʇıןdɯɐ ǝɥ⟘",
-  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "˙sǝɥɔʇıd ɹǝɥbıɥ noʎ sǝʌıb pǝǝds ɹǝɥbıH"
+  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "˙sǝɥɔʇıd ɹǝɥbıɥ noʎ sǝʌıb pǝǝds ɹǝɥbıH",
+  "item.createaddon.incomplete_diamond": "puoɯɐıᗡ ǝʇǝןdɯoɔuI",
+  "recipe.createaddon.compressing": "ssǝɹԀ ןɐɔıuɐɥɔǝW bıᗺ ɹo ssǝɹԀ ןɐɔıuɐɥɔǝW ɐ ɥʇıʍ ssǝɹԀ"
 }

@@ -1,6 +1,7 @@
 package com.minecart.createaddon.recipes.compressing;
 
 import com.minecart.createaddon.ModBlocks;
+import com.minecart.createaddon.jei.category.sequencedAssembly.AssemblyCompressing;
 import com.minecart.createaddon.recipes.ModRecipes;
 import com.simibubi.create.compat.jei.category.sequencedAssembly.SequencedAssemblySubCategory;
 import com.simibubi.create.content.processing.recipe.ProcessingRecipeParams;
@@ -19,6 +20,11 @@ import java.util.function.Supplier;
 public class CompressingRecipe extends StandardProcessingRecipe<SingleRecipeInput> implements IAssemblyRecipe {
     public CompressingRecipe(ProcessingRecipeParams params) {
         super(ModRecipes.COMPRESSING, params);
+    }
+
+    @Override
+    public boolean supportsAssembly() {
+        return true;
     }
 
     @Override
@@ -51,6 +57,7 @@ public class CompressingRecipe extends StandardProcessingRecipe<SingleRecipeInpu
 
     @Override
     public void addRequiredMachines(Set<ItemLike> list) {
+        list.add(ModBlocks.BIGPRESS.get());
     }
 
     @Override
@@ -59,6 +66,6 @@ public class CompressingRecipe extends StandardProcessingRecipe<SingleRecipeInpu
 
     @Override
     public Supplier<Supplier<SequencedAssemblySubCategory>> getJEISubCategory() {
-        return null;
+        return () -> AssemblyCompressing::new;
     }
 }
