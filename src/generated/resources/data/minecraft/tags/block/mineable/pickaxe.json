@@ -7,6 +7,7 @@
     "createaddon:kinetic_sculk_sensor",
     "createaddon:brass_noteblock_encased_shaft",
     "createaddon:brass_noteblock_encased_cogwheel",
-    "createaddon:big_mechanical_press"
+    "createaddon:big_mechanical_press",
+    "createaddon:extrusion_die"
   ]
 }

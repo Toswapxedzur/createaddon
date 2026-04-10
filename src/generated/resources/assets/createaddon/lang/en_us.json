@@ -4,6 +4,7 @@
   "block.createaddon.brass_calibrated_noteblock_encased_shaft": "Brass Calibrated Noteblock Encased Shaft",
   "block.createaddon.brass_noteblock_encased_cogwheel": "Brass Noteblock Encased Cogwheel",
   "block.createaddon.brass_noteblock_encased_shaft": "Brass Noteblock Encased Shaft",
+  "block.createaddon.extrusion_die": "Extrusion Die",
   "block.createaddon.kinetic_sculk_sensor": "Kinetic Sculk Sensor",
   "block.createaddon.noteblock_encased_cogwheel": "Noteblock Encased Cogwheel",
   "block.createaddon.noteblock_encased_shaft": "Noteblock Encased Shaft",
@@ -15,5 +16,7 @@
   "createaddon.ponder.noteblock_encased_cogwheel.header": "The Noteblock Encased Cogwheel",
   "createaddon.ponder.noteblock_encased_cogwheel.text_1": "When powered, it will emit a note beat 4 times per second.",
   "createaddon.ponder.noteblock_encased_cogwheel.text_2": "The amplitude of the beats is fixed, but the pitch depends on rotation speed.",
-  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "Higher speed gives you higher pitches."
+  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "Higher speed gives you higher pitches.",
+  "item.createaddon.incomplete_diamond": "Incomplete Diamond",
+  "recipe.createaddon.compressing": "Press with a Mechanical Press or Big Mechanical Press"
 }

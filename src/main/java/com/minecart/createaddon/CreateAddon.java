@@ -54,6 +54,7 @@ public class CreateAddon {
         modEventBus.addListener(ModDatagen::gatherData);
         REGISTRATE.registerEventListeners(modEventBus);
         ModBlocks.register();
+        ModItems.register();
         ModBlockEntities.register();
         ModRecipes.register(modEventBus);
         ModConfigs.register(context, modContainer);
@@ -115,6 +116,11 @@ public class CreateAddon {
         CreateAddon.REGISTRATE.addRawLang(
                 "createaddon.behaviour.volume",
                 "Select volumn"
+        );
+
+        CreateAddon.REGISTRATE.addRawLang(
+                "recipe.createaddon.compressing",
+                "Press with a Mechanical Press or Big Mechanical Press"
         );
     }
 
