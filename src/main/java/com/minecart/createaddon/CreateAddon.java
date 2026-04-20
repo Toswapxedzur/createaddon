@@ -2,7 +2,6 @@ package com.minecart.createaddon;
 
 import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieDecompositionCache;
 import com.minecart.createaddon.config.ModConfigs;
-import com.minecart.createaddon.ponder.ModPonder;
 import com.minecart.createaddon.recipes.ModRecipes;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -10,7 +9,6 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import net.createmod.catnip.lang.FontHelper;
-import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -18,15 +16,12 @@ import net.minecraft.server.packs.resources.SimplePreparableReloadListener;
 import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.AddReloadListenerEvent;
@@ -46,6 +41,10 @@ public class CreateAddon {
         REGISTRATE.defaultCreativeTab(CreativeModeTabs.BUILDING_BLOCKS);
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                 .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
+
+        REGISTRATE.addRawLang("createaddon.behaviour.beaker.fill_level", "Beaker fill");
+        REGISTRATE.addRawLang("createaddon.behaviour.measuring_cylinder.fill_level", "Cylinder fill");
+        REGISTRATE.addRawLang("createaddon.value_settings.fill", "Fill");
     }
 
     public CreateAddon(IEventBus modEventBus, ModContainer modContainer) {
@@ -53,6 +52,7 @@ public class CreateAddon {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(ModDatagen::gatherData);
         REGISTRATE.registerEventListeners(modEventBus);
+        ModDataComponents.REGISTER.register(modEventBus);
         ModBlocks.register();
         ModItems.register();
         ModBlockEntities.register();
@@ -81,15 +81,6 @@ public class CreateAddon {
                 ExtrusionDieDecompositionCache.invalidateAfterResourceReload();
             }
         });
-    }
-
-    @EventBusSubscriber(modid = MODID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-            ModPartialModel.register();
-            PonderIndex.addPlugin(new ModPonder());
-        }
     }
 
     public static void registerLangEntries() {

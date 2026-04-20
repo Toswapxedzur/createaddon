@@ -7,7 +7,9 @@ import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieVisual;
 import com.minecart.createaddon.block_entities.bigPress.BigPressBlockEntity;
 import com.minecart.createaddon.block_entities.bigPress.BigPressRenderer;
 import com.minecart.createaddon.block_entities.bigPress.BigPressVisual;
-import com.minecart.createaddon.block_entity_renderer.CogRenderer;
+import com.minecart.createaddon.block_entities.labware.BeakerBlockEntity;
+import com.minecart.createaddon.block_entities.labware.MeasuringCylinderBlockEntity;
+import com.minecart.createaddon.client.renderer.CogRenderer;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
@@ -93,6 +95,16 @@ public class ModBlockEntities {
             .visual(() -> ExtrusionDieVisual::new, false)
             .validBlocks(ModBlocks.EXTRUSION_DIE)
             .renderer(() -> ExtrusionDieRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<BeakerBlockEntity> BEAKER = REGISTRATE
+            .blockEntity("beaker", BeakerBlockEntity::new)
+            .validBlocks(ModBlocks.BEAKER)
+            .register();
+
+    public static final BlockEntityEntry<MeasuringCylinderBlockEntity> MEASURING_CYLINDER = REGISTRATE
+            .blockEntity("measuring_cylinder", MeasuringCylinderBlockEntity::new)
+            .validBlocks(ModBlocks.MEASURING_CYLINDER)
             .register();
 
     public static void register() {
