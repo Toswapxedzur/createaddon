@@ -3,7 +3,9 @@ package com.minecart.createaddon.data.recipe;
 import com.minecart.createaddon.CreateAddon;
 import com.minecart.createaddon.ModItems;
 import com.minecart.createaddon.recipes.compressing.CompressingRecipe;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.api.data.recipe.SequencedAssemblyRecipeGen;
+import com.simibubi.create.content.kinetics.deployer.DeployerApplicationRecipe;
 import com.simibubi.create.content.kinetics.press.PressingRecipe;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -20,6 +22,7 @@ public final class CreateAddonSequencedAssemblyRecipeGen extends SequencedAssemb
             .addOutput(Items.DIAMOND, 1)
             .loops(10)
             .addStep(PressingRecipe::new, rb -> rb)
+//            .addStep(DeployerApplicationRecipe::new, dp -> dp.require(AllItems.ZINC_INGOT))
             .addStep(CompressingRecipe::new, rb -> rb.duration(500))
             .addStep(PressingRecipe::new, rb -> rb)
             .addStep(CompressingRecipe::new, rb -> rb.duration(500)));

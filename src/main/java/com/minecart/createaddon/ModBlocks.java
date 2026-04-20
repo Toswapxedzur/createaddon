@@ -2,6 +2,11 @@ package com.minecart.createaddon;
 
 import com.minecart.createaddon.block.*;
 import com.minecart.createaddon.block.andesite.ACNESBlock;
+import com.minecart.createaddon.block.labware.BeakerBlock;
+import com.minecart.createaddon.block.labware.LabwareBlock;
+import com.minecart.createaddon.block.labware.MeasuringCylinderBlock;
+import com.minecart.createaddon.item.LabwareBlockItem;
+import com.minecart.createaddon.fluid.LabwareFluidContents;
 import com.minecart.createaddon.block.andesite.AndesiteNoteblockEncasedCogwheelBlock;
 import com.minecart.createaddon.block.andesite.AndesiteNoteblockEncasedShaftBlock;
 import com.minecart.createaddon.block.brass.BCNESBlock;
@@ -21,7 +26,9 @@ import com.simibubi.create.foundation.data.ModelGen;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.data.TagGen;
 import com.tterrag.registrate.providers.RegistrateRecipeProvider;
+import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.BlockTags;
@@ -31,6 +38,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.SculkSensorPhase;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
+import net.neoforged.neoforge.fluids.FluidStack;
 
 import static com.minecart.createaddon.CreateAddon.REGISTRATE;
 
@@ -226,6 +235,42 @@ public class ModBlocks {
             .onRegister(MovementBehaviour.movementBehaviour(new ExtrusionDieMovementBehaviour()))
             .lang("Extrusion Die")
             .item()
+            .transform(ModelGen.customItemModel())
+            .register();
+
+    private static <T extends LabwareBlock<?>> NonNullBiConsumer<RegistrateBlockLootTables, T> labwareLoot() {
+        return (b, ctx) ->
+            b.add(ctx, b.createSingleItemTable(ctx).apply(CopyComponentsFunction
+                    .copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ModDataComponents.LABWARE_CONTENTS.get())));
+    }
+
+    public static final BlockEntry<BeakerBlock> BEAKER = REGISTRATE
+            .block("beaker", BeakerBlock::new)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(p -> p.strength(0.3f))
+            .properties(p -> p.noOcclusion())
+            .blockstate((c, p) -> {})
+            .loot(labwareLoot())
+//            .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
+            .lang("Beaker")
+            .item(LabwareBlockItem::new)
+            .properties(p -> p.component(ModDataComponents.LABWARE_CONTENTS, new LabwareFluidContents(FluidStack.EMPTY, 250, 50)))
+            .properties(p -> p.stacksTo(1))
+            .transform(ModelGen.customItemModel())
+            .register();
+
+    public static final BlockEntry<MeasuringCylinderBlock> MEASURING_CYLINDER = REGISTRATE
+            .block("measuring_cylinder", MeasuringCylinderBlock::new)
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(p -> p.strength(0.3f))
+            .properties(p -> p.noOcclusion())
+            .blockstate((c, p) -> {})
+            .loot(labwareLoot())
+//            .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
+            .lang("Measuring Cylinder")
+            .item(LabwareBlockItem::new)
+            .properties(p -> p.component(ModDataComponents.LABWARE_CONTENTS, new LabwareFluidContents(FluidStack.EMPTY, 50, 10)))
+            .properties(p -> p.stacksTo(1))
             .transform(ModelGen.customItemModel())
             .register();
 

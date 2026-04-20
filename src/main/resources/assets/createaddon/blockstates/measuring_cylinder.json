@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createaddon:block/measuring_cylinder/block"
+    }
+  }
+}

@@ -1,4 +1,4 @@
-package com.minecart.createaddon.block_entity_renderer;
+package com.minecart.createaddon.client.renderer;
 
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
