@@ -99,25 +99,13 @@ public abstract class LabwareBlockEntity extends SmartBlockEntity {
     @Override
     protected void read(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
         super.read(tag, registries, clientPacket);
-        if (tag.contains(TANK_KEY)) {
-            FluidStack.OPTIONAL_CODEC.parse(registries.createSerializationContext(NbtOps.INSTANCE), tag.get(TANK_KEY))
-                    .resultOrPartial(msg -> {})
-                    .ifPresent(tank::setFluid);
-        } else {
-            tank.setFluid(FluidStack.EMPTY);
-        }
+        tank.readFromNBT(registries, tag);
     }
 
     @Override
     protected void write(CompoundTag tag, HolderLookup.Provider registries, boolean clientPacket) {
         super.write(tag, registries, clientPacket);
-        if (tank.isEmpty()) {
-            tag.remove(TANK_KEY);
-        } else {
-            FluidStack.OPTIONAL_CODEC.encodeStart(registries.createSerializationContext(NbtOps.INSTANCE), tank.getFluid())
-                    .resultOrPartial(msg -> {})
-                    .ifPresent(encoded -> tag.put(TANK_KEY, encoded));
-        }
+        tank.writeToNBT(registries, tag);
     }
 
     @Override
