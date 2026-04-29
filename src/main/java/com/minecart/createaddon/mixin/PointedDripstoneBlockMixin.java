@@ -4,6 +4,9 @@ import com.minecart.createaddon.block_entities.behaviour.DripCollectorBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.PointedDripstoneBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(PointedDripstoneBlock.class)
 public abstract class PointedDripstoneBlockMixin {
+
     @Shadow
     @Nullable
     private static BlockPos findTip(BlockState state, LevelAccessor level, BlockPos pos, int maxIterations, boolean isTipMerge) {
