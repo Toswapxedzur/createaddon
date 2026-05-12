@@ -61,3 +61,17 @@ mandatory = true
 versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "create"
+mandatory = true
+versionRange = "[6.0.8,6.1.0)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies."${mod_id}"]]
+modId = "flywheel"
+mandatory = true
+versionRange = "[1.0.0,1.1.0)"
+ordering = "AFTER"
+side = "BOTH"

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createaddon:noteblock_encased_shaft",
+    "createaddon:noteblock_encased_cogwheel",
+    "createaddon:andesite_calibrated_noteblock_encased_shaft",
+    "createaddon:brass_calibrated_noteblock_encased_shaft",
+    "createaddon:brass_noteblock_encased_shaft",
+    "createaddon:brass_noteblock_encased_cogwheel",
+    "createaddon:kinetic_sculk_sensor",
+    "createaddon:big_mechanical_press",
+    "createaddon:mechanical_sieve",
+    "createaddon:extrusion_die"
+  ]
+}

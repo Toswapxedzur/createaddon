@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "createaddon:brass_calibrated_noteblock_encased_shaft"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "createaddon:blocks/brass_calibrated_noteblock_encased_shaft"
+}

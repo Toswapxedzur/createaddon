@@ -2,9 +2,11 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.minecart.createaddon.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_17",
   "refmap": "createaddon.refmap.json",
   "mixins": [
+    "PointedDripstoneBlockMixin",
+    "GenericItemEmptyingMixin"
   ],
   "client": [
   ],

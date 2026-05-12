@@ -1,0 +1,23 @@
+{
+  "block.createaddon.andesite_calibrated_noteblock_encased_shaft": "Andesite Calibrated Noteblock Encased Shaft",
+  "block.createaddon.beaker": "Beaker",
+  "block.createaddon.big_mechanical_press": "Big Mechanical Press",
+  "block.createaddon.brass_calibrated_noteblock_encased_shaft": "Brass Calibrated Noteblock Encased Shaft",
+  "block.createaddon.brass_noteblock_encased_cogwheel": "Brass Noteblock Encased Cogwheel",
+  "block.createaddon.brass_noteblock_encased_shaft": "Brass Noteblock Encased Shaft",
+  "block.createaddon.extrusion_die": "Extrusion Die",
+  "block.createaddon.kinetic_sculk_sensor": "Kinetic Sculk Sensor",
+  "block.createaddon.measuring_cylinder": "Measuring Cylinder",
+  "block.createaddon.mechanical_sieve": "Mechanical Sieve",
+  "block.createaddon.noteblock_encased_cogwheel": "Noteblock Encased Cogwheel",
+  "block.createaddon.noteblock_encased_shaft": "Noteblock Encased Shaft",
+  "create.createaddon.tooltip.kinetic_noteblock.frequency": "With frequency %s beats per second",
+  "create.createaddon.tooltip.kinetic_noteblock.speed": "Rotation Speed: %s RPM",
+  "create.createaddon.tooltip.kinetic_noteblock.tune": "Current Tune: %s at the current speed",
+  "create.createaddon.tooltip.kinetic_noteblock.volumn": "With volumn: ",
+  "createaddon.behaviour.volume": "Select volumn",
+  "createaddon.recipe.compressing": "Compressing",
+  "createaddon.recipe.sieving": "Sieving",
+  "item.createaddon.incomplete_diamond": "Incomplete Diamond",
+  "recipe.createaddon.compressing": "Press with a Mechanical Press or Big Mechanical Press"
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "minecraft:amethyst_shard"
+    },
+    {
+      "item": "create:brass_ingot"
+    },
+    {
+      "item": "minecraft:note_block"
+    },
+    {
+      "item": "create:shaft"
+    },
+    {
+      "item": "create:shaft"
+    }
+  ],
+  "result": {
+    "item": "createaddon:brass_calibrated_noteblock_encased_shaft"
+  }
+}
