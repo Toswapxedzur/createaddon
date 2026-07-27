@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "createaddon:block/extrusion_die/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createaddon:block/extrusion_die/block"
+    },
+    "facing=south": {
+      "model": "createaddon:block/extrusion_die/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createaddon:block/extrusion_die/block",
+      "y": 270
+    }
+  }
+}

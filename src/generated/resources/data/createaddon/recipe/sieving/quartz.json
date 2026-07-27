@@ -1,0 +1,23 @@
+{
+  "type": "createaddon:sieving",
+  "ingredients": [
+    {
+      "item": "minecraft:soul_sand"
+    }
+  ],
+  "processing_time": 160,
+  "results": [
+    {
+      "chance": 0.25,
+      "id": "minecraft:quartz"
+    },
+    {
+      "chance": 0.1,
+      "id": "minecraft:nether_wart"
+    },
+    {
+      "chance": 0.05,
+      "id": "minecraft:gold_nugget"
+    }
+  ]
+}

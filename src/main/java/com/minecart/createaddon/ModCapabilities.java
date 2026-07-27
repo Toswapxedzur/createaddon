@@ -12,6 +12,7 @@ public final class ModCapabilities {
     public static void register(RegisterCapabilitiesEvent event) {
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.BEAKER.get(), (be, ctx) -> be.getFluidHandler());
         event.registerBlockEntity(Capabilities.FluidHandler.BLOCK, ModBlockEntities.MEASURING_CYLINDER.get(), (be, ctx) -> be.getFluidHandler());
+        com.minecart.createaddon.block_entities.sieve.MechanicalSieveBlockEntity.registerCapabilities(event);
 
         event.registerItem(Capabilities.FluidHandler.ITEM, (stack, ctx) -> {
             if (stack.is(ModBlocks.BEAKER.asItem())) {

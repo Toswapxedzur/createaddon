@@ -2,6 +2,7 @@ package com.minecart.createaddon.recipes;
 
 import com.minecart.createaddon.CreateAddon;
 import com.minecart.createaddon.recipes.compressing.CompressingRecipe;
+import com.minecart.createaddon.recipes.sieving.SieveRecipe;
 import com.simibubi.create.content.processing.recipe.StandardProcessingRecipe;
 import com.simibubi.create.foundation.recipe.IRecipeTypeInfo;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -20,7 +21,8 @@ import java.util.function.Supplier;
 
 public enum ModRecipes implements IRecipeTypeInfo {
 
-    COMPRESSING(CompressingRecipe::new);
+    COMPRESSING(CompressingRecipe::new),
+    SIEVING(SieveRecipe::new);
 
     public final ResourceLocation id;
     public final Supplier<RecipeSerializer<?>> serializerSupplier;

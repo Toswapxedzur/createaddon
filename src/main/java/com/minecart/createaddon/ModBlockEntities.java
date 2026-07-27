@@ -7,6 +7,9 @@ import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieVisual;
 import com.minecart.createaddon.block_entities.bigPress.BigPressBlockEntity;
 import com.minecart.createaddon.block_entities.bigPress.BigPressRenderer;
 import com.minecart.createaddon.block_entities.bigPress.BigPressVisual;
+import com.minecart.createaddon.block_entities.sieve.MechanicalSieveBlockEntity;
+import com.minecart.createaddon.block_entities.sieve.MechanicalSieveRenderer;
+import com.minecart.createaddon.block_entities.sieve.MechanicalSieveVisual;
 import com.minecart.createaddon.block_entities.labware.BeakerBlockEntity;
 import com.minecart.createaddon.block_entities.labware.MeasuringCylinderBlockEntity;
 import com.minecart.createaddon.client.renderer.CogRenderer;
@@ -88,6 +91,15 @@ public class ModBlockEntities {
             .visual(() -> BigPressVisual::new)
             .validBlock(ModBlocks.BIGPRESS)
             .renderer(() -> BigPressRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<MechanicalSieveBlockEntity> MECHANICAL_SIEVE = REGISTRATE
+            .blockEntity("mechanical_sieve", MechanicalSieveBlockEntity::new)
+            // renderNormally=true: keep BlockEntityRenderer.renderSafe firing alongside the
+            // Flywheel visual so the item overlays + animated net fallback still render.
+            .visual(() -> MechanicalSieveVisual::new, true)
+            .validBlocks(ModBlocks.MECHANICAL_SIEVE)
+            .renderer(() -> MechanicalSieveRenderer::new)
             .register();
 
     public static final BlockEntityEntry<ExtrusionDieBlockEntity> EXTRUSION_DIE = REGISTRATE
