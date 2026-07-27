@@ -15,6 +15,7 @@ import com.minecart.createaddon.block.brass.BrassNoteblockEncasedShaftBlock;
 import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieBlock;
 import com.minecart.createaddon.block_entities.extrusion.ExtrusionDieMovementBehaviour;
 import com.minecart.createaddon.block_entities.bigPress.BigPressBlock;
+import com.minecart.createaddon.block_entities.sieve.MechanicalSieveBlock;
 import com.minecart.createaddon.config.ModStress;
 import com.simibubi.create.api.behaviour.movement.MovementBehaviour;
 import com.simibubi.create.AllBlocks;
@@ -30,6 +31,7 @@ import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -223,6 +225,30 @@ public class ModBlocks {
             .transform(TagGen.axeOrPickaxe())
             .item(AssemblyOperatorBlockItem::new)
             .transform(ModelGen.customItemModel())
+            .register();
+
+    public static final BlockEntry<MechanicalSieveBlock> MECHANICAL_SIEVE = REGISTRATE
+            .block("mechanical_sieve", MechanicalSieveBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(p -> p.noOcclusion())
+            .blockstate((c, p) -> {})
+            .transform(ModStress.setImpact(4.0))
+            .transform(TagGen.pickaxeOnly())
+            .lang("Mechanical Sieve")
+            .item()
+            .transform(ModelGen.customItemModel())
+            .recipe((ctx, provider) -> {
+                ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, ctx.get())
+                        .pattern("SAS")
+                        .pattern("HCH")
+                        .pattern("SAS")
+                        .define('S', Items.STRING)
+                        .define('A', AllItems.ANDESITE_ALLOY)
+                        .define('H', AllBlocks.SHAFT)
+                        .define('C', AllBlocks.ANDESITE_CASING)
+                        .unlockedBy("has_andesite_casing", RegistrateRecipeProvider.has(AllBlocks.ANDESITE_CASING))
+                        .save(provider, CreateAddon.modLoc("crafting/mechanical_sieve"));
+            })
             .register();
 
     public static final BlockEntry<ExtrusionDieBlock> EXTRUSION_DIE = REGISTRATE

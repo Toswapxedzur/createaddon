@@ -11,14 +11,18 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.client.extensions.common.IClientItemExtensions;
 import net.neoforged.neoforge.common.SoundActions;
@@ -52,11 +56,21 @@ public class LabwareBlockItem extends BlockItem {
         Level level = context.getLevel();
         Player player = context.getPlayer();
         if (player != null) {
-//            if (tryScoopInfiniteFromWorld(player, context.getHand(), level, context.getClickedPos(), context.getClickedFace())) {
-//                return InteractionResult.sidedSuccess(level.isClientSide);
-//            }
+            if (tryScoopInfiniteFromWorld(player, context.getHand(), level, context.getClickedPos(), context.getClickedFace())) {
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
         return super.useOn(context);
+    }
+
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        BlockHitResult hit = getPlayerPOVHitResult(level, player, ClipContext.Fluid.SOURCE_ONLY);
+        if (hit.getType() == HitResult.Type.BLOCK
+                && tryScoopInfiniteFromWorld(player, hand, level, hit.getBlockPos(), hit.getDirection())) {
+            return InteractionResultHolder.sidedSuccess(player.getItemInHand(hand), level.isClientSide);
+        }
+        return super.use(level, player, hand);
     }
 
     /**
@@ -149,10 +163,10 @@ public class LabwareBlockItem extends BlockItem {
         FluidState inClicked = level.getFluidState(clickedPos);
         BlockPos neighbor = clickedPos.relative(clickedFace);
         FluidState inNeighbor = level.getFluidState(neighbor);
-        if (inClicked.isSource() && inNeighbor.isSource()) {
+        if (inClicked.isSource()) {
             return clickedPos;
         }
-        if (inNeighbor.isSource() && inNeighbor.isSource()) {
+        if (inNeighbor.isSource()) {
             return neighbor;
         }
         return null;

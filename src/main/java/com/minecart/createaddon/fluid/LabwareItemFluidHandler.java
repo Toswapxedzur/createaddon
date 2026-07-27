@@ -83,10 +83,10 @@ public final class LabwareItemFluidHandler implements IFluidHandlerItem {
             return 0;
         }
 
-        int effectiveTarget = c.targetMb();
+        int effectiveTarget = c.targetMb() > 0 ? c.targetMb() : capacityMb;
         int availableSpace = effectiveTarget - c.actualMb();
 
-        if (availableSpace < 0) {
+        if (availableSpace <= 0) {
             return 0;
         }
 

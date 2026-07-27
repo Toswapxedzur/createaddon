@@ -8,6 +8,7 @@
   "block.createaddon.extrusion_die": "Extrusion Die",
   "block.createaddon.kinetic_sculk_sensor": "Kinetic Sculk Sensor",
   "block.createaddon.measuring_cylinder": "Measuring Cylinder",
+  "block.createaddon.mechanical_sieve": "Mechanical Sieve",
   "block.createaddon.noteblock_encased_cogwheel": "Noteblock Encased Cogwheel",
   "block.createaddon.noteblock_encased_shaft": "Noteblock Encased Shaft",
   "create.createaddon.tooltip.kinetic_noteblock.frequency": "With frequency %s beats per second",

@@ -21,6 +21,7 @@ public class CreateAddonRecipeProvider extends RecipeProvider {
 
     public static void registerAllProcessing(DataGenerator gen, PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         GENERATORS.add(new CreateAddonCompressingRecipeGen(output, registries));
+        GENERATORS.add(new CreateAddonSieveRecipeGen(output, registries));
         gen.addProvider(true, new CreateAddonSequencedAssemblyRecipeGen(output, registries));
 
         gen.addProvider(true, new DataProvider() {
