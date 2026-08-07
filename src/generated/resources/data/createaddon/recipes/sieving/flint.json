@@ -1,0 +1,23 @@
+{
+  "type": "createaddon:sieving",
+  "ingredients": [
+    {
+      "item": "minecraft:gravel"
+    }
+  ],
+  "processingTime": 120,
+  "results": [
+    {
+      "chance": 0.5,
+      "item": "minecraft:flint"
+    },
+    {
+      "chance": 0.2,
+      "item": "minecraft:iron_nugget"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:coal"
+    }
+  ]
+}

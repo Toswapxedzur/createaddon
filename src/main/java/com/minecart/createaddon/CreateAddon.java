@@ -32,6 +32,10 @@ public class CreateAddon {
         REGISTRATE.defaultCreativeTab(CreativeModeTabs.BUILDING_BLOCKS);
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                 .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
+
+        REGISTRATE.addRawLang("createaddon.behaviour.beaker.fill_level", "Beaker fill");
+        REGISTRATE.addRawLang("createaddon.behaviour.measuring_cylinder.fill_level", "Cylinder fill");
+        REGISTRATE.addRawLang("createaddon.value_settings.fill", "Fill");
     }
 
     public CreateAddon() {
@@ -39,6 +43,7 @@ public class CreateAddon {
         ModLoadingContext context = ModLoadingContext.get();
 
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(ModDatagen::gatherData);
         REGISTRATE.registerEventListeners(modEventBus);
 
         ModBlocks.register();
@@ -48,8 +53,6 @@ public class CreateAddon {
         ModConfigs.register(context);
 
         MinecraftForge.EVENT_BUS.register(this);
-
-        registerLangEntries();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -84,6 +87,10 @@ public class CreateAddon {
         REGISTRATE.addRawLang(
                 "createaddon.behaviour.volume",
                 "Select volumn"
+        );
+        REGISTRATE.addRawLang(
+                "recipe.createaddon.compressing",
+                "Press with a Mechanical Press or Big Mechanical Press"
         );
     }
 
