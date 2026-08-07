@@ -133,3 +133,25 @@ runs/
 # Editor settings not shared by the project
 /.vscode/
 /.cursor/
+# build & env artifacts
+build/
+.gradle/
+run/
+run-data/
+runs/
+logs/
+.idea/
+*.iml
+.build/
+DerivedData/
+*.xcuserstate
+.swiftpm/xcode/
+node_modules/
+dist/
+.next/
+.astro/
+target/
+.venv/
+.venv-*/
+__pycache__/
+.DS_Store
