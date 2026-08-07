@@ -37,9 +37,9 @@ import java.util.function.Consumer;
 
 /**
  * Labware uses a directed exchange with block fluid handlers: compares the block's total fluid amount to this stack's
- * {@link LabwareFluidContents#targetMb()}. If the block holds more, fluid is moved from the labware into the block
- * (drain the beaker/cylinder); if the block holds less, fluid is moved from the block into the labware. Infinite
- * overworld water sources are handled by {@link #tryScoopInfiniteFromWorld}.
+ * {@link LabwareFluidContents#targetMb()}. If the block holds more, fluid is moved from the block into the labware;
+ * if the block holds less, excess fluid is moved from the labware into the block. Infinite overworld water sources
+ * are handled by {@link #tryScoopInfiniteFromWorld}.
  */
 public class LabwareBlockItem extends BlockItem {
     public LabwareBlockItem(Block block, Properties properties) {
@@ -56,6 +56,9 @@ public class LabwareBlockItem extends BlockItem {
         Level level = context.getLevel();
         Player player = context.getPlayer();
         if (player != null) {
+            if (tryDirectedLabwareFluidExchange(player, context.getHand(), level, context.getClickedPos(), context.getClickedFace())) {
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
             if (tryScoopInfiniteFromWorld(player, context.getHand(), level, context.getClickedPos(), context.getClickedFace())) {
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
@@ -75,7 +78,7 @@ public class LabwareBlockItem extends BlockItem {
 
     /**
      * If the clicked block exposes a fluid handler, compare its stored amount to {@link LabwareFluidContents#targetMb()}.
-     * Block amount &gt; target: drain labware into the block. Block amount &lt; target: fill labware from the block.
+     * Block amount &gt; target: fill labware from the block. Block amount &lt; target: drain excess labware fluid into the block.
      */
     private static boolean tryDirectedLabwareFluidExchange(Player player, InteractionHand hand, Level level, BlockPos pos, Direction clickedFace) {
         if (level.isClientSide) {
