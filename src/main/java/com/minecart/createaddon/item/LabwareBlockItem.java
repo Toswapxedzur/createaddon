@@ -49,6 +49,9 @@ public class LabwareBlockItem extends BlockItem {
         Level level = context.getLevel();
         Player player = context.getPlayer();
         if (player != null) {
+            if (tryDirectedLabwareFluidExchange(player, context.getHand(), level, context.getClickedPos(), context.getClickedFace())) {
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
             // Disabled until tested; mirror of 1.21.1 source comment.
 //            if (tryScoopInfiniteFromWorld(player, context.getHand(), level, context.getClickedPos(), context.getClickedFace())) {
 //                return InteractionResult.sidedSuccess(level.isClientSide);
