@@ -1,0 +1,23 @@
+{
+  "type": "createaddon:sieving",
+  "ingredients": [
+    {
+      "item": "minecraft:dirt"
+    }
+  ],
+  "processingTime": 80,
+  "results": [
+    {
+      "chance": 0.4,
+      "item": "minecraft:wheat_seeds"
+    },
+    {
+      "chance": 0.2,
+      "item": "minecraft:stick"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:bone_meal"
+    }
+  ]
+}

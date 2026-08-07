@@ -15,6 +15,14 @@
   "create.createaddon.tooltip.kinetic_noteblock.speed": "WԀᴚ %s :pǝǝdS uoıʇɐʇoᴚ",
   "create.createaddon.tooltip.kinetic_noteblock.tune": "pǝǝds ʇuǝɹɹnɔ ǝɥʇ ʇɐ %s :ǝun⟘ ʇuǝɹɹnƆ",
   "create.createaddon.tooltip.kinetic_noteblock.volumn": " :uɯnןoʌ ɥʇıM",
+  "createaddon.behaviour.beaker.fill_level": "ןןıɟ ɹǝʞɐǝᗺ",
+  "createaddon.behaviour.measuring_cylinder.fill_level": "ןןıɟ ɹǝpuıןʎƆ",
   "createaddon.behaviour.volume": "uɯnןoʌ ʇɔǝןǝS",
-  "item.createaddon.incomplete_diamond": "puoɯɐıᗡ ǝʇǝןdɯoɔuI"
+  "createaddon.ponder.noteblock_encased_cogwheel.header": "ןǝǝɥʍboƆ pǝsɐɔuƎ ʞɔoןqǝʇoN ǝɥ⟘",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_1": "˙puoɔǝs ɹǝd sǝɯıʇ ㄣ ʇɐǝq ǝʇou ɐ ʇıɯǝ ןןıʍ ʇı 'pǝɹǝʍod uǝɥM",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_2": "˙pǝǝds uoıʇɐʇoɹ uo spuǝdǝp ɥɔʇıd ǝɥʇ ʇnq 'pǝxıɟ sı sʇɐǝq ǝɥʇ ɟo ǝpnʇıןdɯɐ ǝɥ⟘",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "˙sǝɥɔʇıd ɹǝɥbıɥ noʎ sǝʌıb pǝǝds ɹǝɥbıH",
+  "createaddon.value_settings.fill": "ןןıℲ",
+  "item.createaddon.incomplete_diamond": "puoɯɐıᗡ ǝʇǝןdɯoɔuI",
+  "recipe.createaddon.compressing": "ssǝɹԀ ןɐɔıuɐɥɔǝW bıᗺ ɹo ssǝɹԀ ןɐɔıuɐɥɔǝW ɐ ɥʇıʍ ssǝɹԀ"
 }

@@ -19,3 +19,13 @@ hs_err_pid*
 
 # Common working directory
 run
+
+# build & run artifacts
+run/
+build/
+.gradle/
+run-data/
+logs/
+.idea/
+.DS_Store
+*.iml

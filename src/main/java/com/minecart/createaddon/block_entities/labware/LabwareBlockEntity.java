@@ -140,6 +140,7 @@ public abstract class LabwareBlockEntity extends SmartBlockEntity {
         if (tag == null || !tag.contains(CONTENTS_KEY)) {
             tank.setFluid(FluidStack.EMPTY);
             if (fillLevel != null) fillLevel.setStoredTarget(0);
+            setChanged();
             return;
         }
         LabwareFluidContents contents = LabwareFluidContents.read(tag.getCompound(CONTENTS_KEY));
@@ -153,6 +154,10 @@ public abstract class LabwareBlockEntity extends SmartBlockEntity {
         }
         if (fillLevel != null) {
             fillLevel.setStoredTarget(contents.targetMb());
+        }
+        setChanged();
+        if (level != null && !level.isClientSide()) {
+            sendData();
         }
     }
 

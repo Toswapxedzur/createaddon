@@ -1,0 +1,19 @@
+{
+  "type": "createaddon:sieving",
+  "ingredients": [
+    {
+      "item": "minecraft:sand"
+    }
+  ],
+  "processingTime": 100,
+  "results": [
+    {
+      "chance": 0.05,
+      "item": "minecraft:gold_nugget"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:glowstone_dust"
+    }
+  ]
+}
