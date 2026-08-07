@@ -76,7 +76,7 @@ side = "BOTH"
 modId="create"
 type="required"
 versionRange="[6.0.9,6.1.0)"
-ordering="NONE"
+ordering="AFTER"
 side="BOTH"
 
 # Features are specific properties of the game environment, that you may want to declare you require. This example declares

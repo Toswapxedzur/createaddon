@@ -4,6 +4,8 @@
   "package": "com.minecart.createaddon.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "GenericItemEmptyingMixin",
+    "PointedDripstoneBlockMixin"
   ],
   "client": [
   ],

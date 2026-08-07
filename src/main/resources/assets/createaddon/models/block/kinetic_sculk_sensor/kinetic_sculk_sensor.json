@@ -1,0 +1,73 @@
+{
+	"parent": "block/block",
+    "render_type": "minecraft:cutout",
+	"textures": {
+		"1": "create:block/gearbox",
+		"2": "create:block/funnel/andesite_funnel_frame",
+		"side": "createaddon:block/sculk_sensor_side_framed",
+		"tendrils": "block/sculk_sensor_tendril_inactive",
+		"top": "block/sculk_sensor_top",
+        "particle": "create:block/gearbox"
+	},
+	"elements": [
+		{
+			"from": [0, 0, 0],
+			"to": [16, 8, 16],
+			"faces": {
+				"north": {"uv": [0, 8, 16, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [0, 8, 16, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [0, 8, 16, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [0, 8, 16, 16], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#top"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2", "cullface": "down"}
+			}
+		},
+		{
+			"from": [-1, 8, 3],
+			"to": [7, 16, 3],
+			"rotation": {"angle": 45, "axis": "y", "origin": [3, 12, 3]},
+			"faces": {
+				"north": {"uv": [4, 8, 12, 16], "texture": "#tendrils"},
+				"south": {"uv": [12, 8, 4, 16], "texture": "#tendrils"}
+			}
+		},
+		{
+			"from": [9, 8, 3],
+			"to": [17, 16, 3],
+			"rotation": {"angle": -45, "axis": "y", "origin": [13, 12, 3]},
+			"faces": {
+				"north": {"uv": [12, 8, 4, 16], "texture": "#tendrils"},
+				"south": {"uv": [4, 8, 12, 16], "texture": "#tendrils"}
+			}
+		},
+		{
+			"from": [9, 8, 13],
+			"to": [17, 16, 13],
+			"rotation": {"angle": 45, "axis": "y", "origin": [13, 12, 13]},
+			"faces": {
+				"north": {"uv": [12, 8, 4, 16], "texture": "#tendrils"},
+				"south": {"uv": [4, 8, 12, 16], "texture": "#tendrils"}
+			}
+		},
+		{
+			"from": [-1, 8, 13],
+			"to": [7, 16, 13],
+			"rotation": {"angle": -45, "axis": "y", "origin": [3, 12, 13]},
+			"faces": {
+				"north": {"uv": [4, 8, 12, 16], "texture": "#tendrils"},
+				"south": {"uv": [12, 8, 4, 16], "texture": "#tendrils"}
+			}
+		},
+		{
+			"from": [1.95, 1, 1.95],
+			"to": [14.05, 0, 14.05],
+			"faces": {
+				"north": {"uv": [2, 15, 14, 16], "rotation": 180, "texture": "#1"},
+				"east": {"uv": [15, 2, 16, 14], "rotation": 270, "texture": "#1"},
+				"south": {"uv": [2, 0, 14, 1], "texture": "#1"},
+				"west": {"uv": [0, 2, 1, 14], "rotation": 90, "texture": "#1"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#1"}
+			}
+		}
+	]
+}

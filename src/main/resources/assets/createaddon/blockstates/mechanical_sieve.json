@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "createaddon:block/mechanical_sieve/block"
+    },
+    "facing=south": {
+      "model": "createaddon:block/mechanical_sieve/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createaddon:block/mechanical_sieve/block",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "createaddon:block/mechanical_sieve/block",
+      "y": 90
+    }
+  }
+}
