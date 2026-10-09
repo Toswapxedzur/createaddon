@@ -117,3 +117,41 @@ runs/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
+
+# Local Minecraft development and test-game output
+/run/
+/run-data/
+/runs/
+/logs/
+/crash-reports/
+/saves/
+*.log.gz
+/usercache.json
+/options.txt
+/src/generated/resources/.cache/
+
+# Editor settings not shared by the project
+/.vscode/
+/.cursor/
+# build & env artifacts
+build/
+.gradle/
+run/
+run-data/
+runs/
+logs/
+.idea/
+*.iml
+.build/
+DerivedData/
+*.xcuserstate
+.swiftpm/xcode/
+node_modules/
+dist/
+.next/
+.astro/
+target/
+.venv/
+.venv-*/
+__pycache__/
+.DS_Store
