@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createaddon:block/noteblock_encased_cogwheel/block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createaddon:block/noteblock_encased_cogwheel/block"
+    },
+    "axis=z": {
+      "model": "createaddon:block/noteblock_encased_cogwheel/block",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

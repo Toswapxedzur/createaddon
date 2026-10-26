@@ -1,0 +1,71 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:coal_block"
+  },
+  "loops": 10,
+  "results": [
+    {
+      "id": "minecraft:diamond"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "createaddon:incomplete_diamond"
+        }
+      ],
+      "results": [
+        {
+          "id": "createaddon:incomplete_diamond"
+        }
+      ]
+    },
+    {
+      "type": "createaddon:compressing",
+      "ingredients": [
+        {
+          "item": "createaddon:incomplete_diamond"
+        }
+      ],
+      "processing_time": 500,
+      "results": [
+        {
+          "id": "createaddon:incomplete_diamond"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "createaddon:incomplete_diamond"
+        }
+      ],
+      "results": [
+        {
+          "id": "createaddon:incomplete_diamond"
+        }
+      ]
+    },
+    {
+      "type": "createaddon:compressing",
+      "ingredients": [
+        {
+          "item": "createaddon:incomplete_diamond"
+        }
+      ],
+      "processing_time": 500,
+      "results": [
+        {
+          "id": "createaddon:incomplete_diamond"
+        }
+      ]
+    }
+  ],
+  "transitional_item": {
+    "id": "createaddon:incomplete_diamond"
+  }
+}

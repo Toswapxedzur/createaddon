@@ -1,0 +1,17 @@
+{
+  "block.createaddon.brass_noteblock_encased_cogwheel": "黄铜音符盒封装齿轮",
+  "block.createaddon.brass_noteblock_encased_shaft": "黄铜音符盒封装传动轴",
+  "block.createaddon.calibrated_noteblock_encased_shaft": "校准音符盒包装传动轴",
+  "block.createaddon.kinetic_sculk_sensor": "动力幽匿感测器",
+  "block.createaddon.noteblock_encased_cogwheel": "音符盒封装齿轮",
+  "block.createaddon.noteblock_encased_shaft": "音符盒封装传动轴",
+  "create.createaddon.tooltip.kinetic_noteblock.frequency": "频率为每秒 %s 拍",
+  "create.createaddon.tooltip.kinetic_noteblock.speed": "转速：%s RPM",
+  "create.createaddon.tooltip.kinetic_noteblock.tune": "当前音调：在当前转速下为 %s",
+  "createaddon.ponder.noteblock_encased_cogwheel.header": "音符盒封装齿轮",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_1": "当获得动力时，它每秒会发出 4 次音符节拍。",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_2": "节拍的振幅（音量）是固定的，但音高取决于转速。",
+  "createaddon.ponder.noteblock_encased_cogwheel.text_3": "转速越高，音高越高。",
+  "create.createaddon.tooltip.kinetic_noteblock.volumn": "音量：",
+  "createaddon.behaviour.volume": "选择音量"
+}
